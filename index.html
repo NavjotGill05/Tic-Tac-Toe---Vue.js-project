@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <!-- Div for a entire game -->
+        <h1 id="heading">Tic Tac Toe</h1>
+        <div id="gameContainer">
+
+            <!-- Div for the information of game-->
+            <div id="gameInfo">
+                <!-- infoMessage will display the data related to the game-->
+                {{ infoMessage }} 
+            </div>
+            <!-- Div for a single square or block of game-->
+            <div id="gameBlocks">
+
+                <!-- v-for attriute will print i number of div in game
+                     then we will add event listener with the help of v-on:click attribute
+                     to call makeMove function on the runningGame object. -->
+                 
+                <!-- "v-bind:class": if block.isHighLighted is true then v-bind:class will add highlighted to that block-->   
+                     
+                <!-- and in the end we can display the value property of block -->
+                <div
+                    v-for="(block, i) in gameBlocks" 
+                    v-on:click="runningGame.makeMove(i)"
+                    v-bind:class='{ highlighted: block.isHighLighted }'
+                    class="block">
+                    {{ block.value }}
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="js/GameBoard.js"></script>
+        <script src="js/GameBlock.js"></script>
+
+        <script type="text/javaScript">
+            //create a global variable that will store the instance of boardGame 
+            let runningGame = new GameBoard();
+			
+            //create new object of class Vue with properties
+            let ticTacToeVue = new Vue({
+                
+				//el: property will bind new vue object to the entire game in HTML with id="gameContainer"
+                el: '#gameContainer',
+                
+				//data property refers to the runningGame object that we want to update as an changes
+				data: runningGame,
+                
+				//computed property will define dynamic properties by calling a function "infoMessage"
+                computed: {
+                    infoMessage: function(){
+                        //if the data means running Game is in progress then it will display whose turn is next
+                        if(this.inProgrs){
+                            return 'Next player is ' + this.turn;
+                        }
+						
+                        //if there is any winner of the game then it will display who is that whether 'O' or 'X'
+                        if(this.gameWinner){
+                            return this.gameWinner + ' is the winner!';
+                        }
+						
+                        //if the game is finished and there is no winner then it will declare the game as 'Draw'
+                        if(!this.gameWinner && !this.inProgrs){
+                            return 'It was a draw!';
+                        }
+                    }
+                }
+            });
+       </script>
+    </body>
+</html>
+
+<!-- 
+	Citations: 
+		Author: dcode channel on youtube
+		Date: 30 June 2020
+		Source: https://www.youtube.com/watch?v=rqb4FgVNrrM
+				https://www.youtube.com/watch?v=0ShYlN-H-ak&t=149s
+				https://www.youtube.com/watch?v=R78cMs75P7E&t=507s
+ -->

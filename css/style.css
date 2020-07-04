@@ -1,0 +1,73 @@
+#heading{
+    font-size: 50px;
+    color: orangered;
+    font-weight: bold;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+#gameContainer{
+    margin: 30px auto;
+    width: 300px;
+    border: 10px solid whitesmoke;
+}
+#gameInfo{
+    background-color: whitesmoke;
+    text-align: center;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+#gameBlocks{
+    height: 300px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.block{
+    height: 25%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: cursive;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10px;
+    color: red;
+}
+.block.highlighted{
+    color: green;
+    background-color: whitesmoke;
+    font-size: 45px;
+}
+.block:hover{
+    background-color: whitesmoke;
+}
+
+/*it will select and give border-bottom to top 12 blocks */
+.block:nth-child(-n + 12){
+    border-bottom: 7px solid mediumpurple;
+}
+/*it will select and give border-right to blocks */
+.block:nth-child(4n + 1), .block:nth-child(4n + 2), .block:nth-child(4n + 3){
+    border-right: 7px solid mediumpurple;
+}
+
+
+
+
+
+/*
+	Citations: 
+		Author: dcode channel on youtube
+		Date: 30 June 2020
+		Source: https://www.youtube.com/watch?v=rqb4FgVNrrM
+				https://www.youtube.com/watch?v=0ShYlN-H-ak&t=149s
+				https://www.youtube.com/watch?v=R78cMs75P7E&t=507s
+ */
